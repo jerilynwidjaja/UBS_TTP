@@ -28,7 +28,7 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
         timeAvailability,
       };
       await axios.post(
-        'http://localhost:3000/api/career-details',
+        'https://sapient-ground-460717-a8.df.r.appspot.com/api/career-details',
         preferences,
         {
           headers: {

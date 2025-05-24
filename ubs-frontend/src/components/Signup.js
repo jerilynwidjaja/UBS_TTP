@@ -11,7 +11,7 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/api/signup', {
+      await axios.post('https://sapient-ground-460717-a8.df.r.appspot.com/api/signup', {
         email,
         password,
       });

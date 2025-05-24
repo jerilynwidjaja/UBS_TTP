@@ -13,8 +13,9 @@ app.use('/api', authRoutes);
   try {
     // In development, it's required to constantly update the user tables. So all previous info would be deleted
     await sequelize.sync({ force: true });
-    app.listen(3000, () =>
-      console.log('🚀 Server running on http://localhost:3000')
+    const PORT = process.env.PORT || 8080;
+    app.listen(8080, () =>
+      console.log('🚀 Server running on https://sapient-ground-460717-a8.df.r.appspot.com')
     );
   } catch (err) {
     console.error('Unable to connect to the DB:', err);
