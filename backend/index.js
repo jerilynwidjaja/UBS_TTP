@@ -11,7 +11,6 @@ app.use('/api', authRoutes);
 
 (async () => {
   try {
-    // In development, it's required to constantly update the user tables. So all previous info would be deleted
     await sequelize.sync({ force: true });
     const PORT = process.env.PORT || 8080;
     app.listen(8080, () =>
