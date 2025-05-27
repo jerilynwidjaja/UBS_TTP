@@ -43,6 +43,9 @@ const ProfilePage = () => {
       <p>
         <strong>Time Availability:</strong> {user.timeAvailability}
       </p>
+      <p>
+        <strong>Level:</strong> {user.level}
+      </p>
     </div>
   );
 };
