@@ -1,9 +1,9 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const User = require('../models/User');
 const router = express.Router();
-const authMiddleware = require('../middlewares/authMiddleware')
+const authMiddleware = require('../middlewares/authMiddleware');
 require('dotenv').config();
 
 router.post('/signup', async (req, res) => {
@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/career-details', authMiddleware, async (req, res) => {
   try {
-    const { careerStage, skills, goals, timeAvailability } = req.body;
+    const { careerStage, skills, goals, timeAvailability, level } = req.body;
     const user = await User.findByPk(req.user.userId);
     if (!user) return res.status(404).send({ message: 'User not found' });
 
@@ -46,6 +46,7 @@ router.post('/career-details', authMiddleware, async (req, res) => {
       skills: skills.join(','),
       learningGoals: goals.join(','),
       timeAvailability,
+      level
     });
     res.json({ message: 'Career details updated successfully' });
   } catch (err) {
@@ -56,15 +57,22 @@ router.post('/career-details', authMiddleware, async (req, res) => {
 router.get('/career-details', authMiddleware, async (req, res) => {
   try {
     const user = await User.findByPk(req.user.userId, {
-    attributes: ['email', 'careerStage', 'skills', 'learningGoals', 'timeAvailability'],
+      attributes: [
+        'email',
+        'careerStage',
+        'skills',
+        'learningGoals',
+        'timeAvailability',
+        'level'
+      ],
     });
-    
+
     if (!user) return res.status(404).send({ message: 'User not found' });
-    
+
     res.send(user);
-    } catch (err) {
+  } catch (err) {
     res.status(500).send({ message: err.message });
-    }
+  }
 });
 
 module.exports = router;

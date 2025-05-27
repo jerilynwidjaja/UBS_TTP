@@ -11,6 +11,7 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
   const [skills, setSkills] = useState([]);
   const [goals, setGoals] = useState([]);
   const [timeAvailability, setTimeAvailability] = useState('');
+  const [level, setLevel] = useState('');
 
   const toggleItem = (item, list, setList) => {
     setList((prev) =>
@@ -26,6 +27,7 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
         skills,
         goals,
         timeAvailability,
+        level
       };
       await axios.post(
         'https://sapient-ground-460717-a8.df.r.appspot.com/api/career-details',
@@ -108,6 +110,19 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
             </label>
           ))}
         </fieldset>
+
+        <div style={sectionStyle}>
+          <label style={labelStyle}>Level:</label>
+          <select
+            value={level}
+            onChange={(e) => setLevel(e.target.value)}
+          >
+            <option value="">Select</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
 
         <fieldset style={fieldsetStyle}>
           <legend style={labelStyle}>Learning Goals:</legend>

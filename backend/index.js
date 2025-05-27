@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const sequelize = require('./db');
-const User = require('./models/user');
 const authRoutes = require('./routes/auth');
 
 const app = express();
@@ -13,8 +11,10 @@ app.use('/api', authRoutes);
   try {
     await sequelize.sync({ force: true });
     const PORT = process.env.PORT || 8080;
-    app.listen(8080, () =>
-      console.log('🚀 Server running on https://sapient-ground-460717-a8.df.r.appspot.com')
+    app.listen(PORT, () =>
+      console.log(
+        '🚀 Server running on https://sapient-ground-460717-a8.df.r.appspot.com'
+      )
     );
   } catch (err) {
     console.error('Unable to connect to the DB:', err);
