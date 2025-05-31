@@ -13,25 +13,28 @@ function Signup() {
     e.preventDefault();
     setIsLoading(true);
     setError('');
-    
+
     try {
       // Replace with your actual axios import and API call
-      const response = await fetch('https://sapient-ground-460717-a8.df.r.appspot.com/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-      
+      const response = await fetch(
+        'https://sapient-ground-460717-a8.df.r.appspot.com/auth/signup',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.message || 'Signup failed');
       }
-      
+
       alert('Signup successful! Redirecting to login...');
       // In your actual app, replace with: navigate('/login');
     } catch (err) {
@@ -44,11 +47,12 @@ function Signup() {
   const styles = {
     container: {
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%)',
+      background:
+        'linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%)',
       color: 'white',
       fontFamily: 'Arial, sans-serif',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
     },
     nav: {
       display: 'flex',
@@ -56,12 +60,12 @@ function Signup() {
       alignItems: 'center',
       padding: '24px 32px',
       position: 'relative',
-      zIndex: 10
+      zIndex: 10,
     },
     navBrand: {
       display: 'flex',
       alignItems: 'center',
-      gap: '12px'
+      gap: '12px',
     },
     logo: {
       width: '48px',
@@ -74,7 +78,7 @@ function Signup() {
       boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
       color: 'white',
       fontWeight: 'bold',
-      fontSize: '20px'
+      fontSize: '20px',
     },
     brandText: {
       fontSize: '24px',
@@ -82,11 +86,11 @@ function Signup() {
       background: 'linear-gradient(135deg, #c084fc, #f472b6)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text'
+      backgroundClip: 'text',
     },
     navButtons: {
       display: 'flex',
-      gap: '24px'
+      gap: '24px',
     },
     navLink: {
       padding: '8px 20px',
@@ -95,18 +99,18 @@ function Signup() {
       fontWeight: '600',
       borderRadius: '25px',
       transition: 'all 0.3s ease',
-      border: '1px solid transparent'
+      border: '1px solid transparent',
     },
     navLinkActive: {
       background: 'rgba(192, 132, 252, 0.1)',
-      border: '1px solid rgba(192, 132, 252, 0.3)'
+      border: '1px solid rgba(192, 132, 252, 0.3)',
     },
     main: {
       flex: 1,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '40px 20px'
+      padding: '40px 20px',
     },
     formContainer: {
       width: '100%',
@@ -116,11 +120,11 @@ function Signup() {
       borderRadius: '24px',
       padding: '48px',
       border: '1px solid rgba(255,255,255,0.15)',
-      boxShadow: '0 25px 50px rgba(0,0,0,0.25)'
+      boxShadow: '0 25px 50px rgba(0,0,0,0.25)',
     },
     formHeader: {
       textAlign: 'center',
-      marginBottom: '40px'
+      marginBottom: '40px',
     },
     formTitle: {
       fontSize: '32px',
@@ -129,28 +133,28 @@ function Signup() {
       background: 'linear-gradient(135deg, #ffffff, #c084fc)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text'
+      backgroundClip: 'text',
     },
     formSubtitle: {
       color: '#d1d5db',
       fontSize: '16px',
-      lineHeight: '1.5'
+      lineHeight: '1.5',
     },
     form: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '24px'
+      gap: '24px',
     },
     inputGroup: {
       display: 'flex',
       flexDirection: 'column',
-      gap: '8px'
+      gap: '8px',
     },
     label: {
       fontSize: '14px',
       fontWeight: '600',
       color: '#e5e7eb',
-      marginLeft: '4px'
+      marginLeft: '4px',
     },
     input: {
       width: '100%',
@@ -163,12 +167,12 @@ function Signup() {
       outline: 'none',
       transition: 'all 0.3s ease',
       backdropFilter: 'blur(10px)',
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
     },
     inputFocus: {
       border: '1px solid #8b5cf6',
       boxShadow: '0 0 0 3px rgba(139, 92, 246, 0.1)',
-      background: 'rgba(255,255,255,0.08)'
+      background: 'rgba(255,255,255,0.08)',
     },
     submitButton: {
       width: '100%',
@@ -183,16 +187,16 @@ function Signup() {
       transition: 'all 0.3s ease',
       boxShadow: '0 8px 25px rgba(139, 92, 246, 0.3)',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     submitButtonHover: {
       transform: 'translateY(-2px)',
-      boxShadow: '0 12px 35px rgba(139, 92, 246, 0.4)'
+      boxShadow: '0 12px 35px rgba(139, 92, 246, 0.4)',
     },
     submitButtonDisabled: {
       opacity: 0.6,
       cursor: 'not-allowed',
-      transform: 'none'
+      transform: 'none',
     },
     loadingSpinner: {
       width: '20px',
@@ -202,7 +206,7 @@ function Signup() {
       borderRadius: '50%',
       animation: 'spin 1s linear infinite',
       display: 'inline-block',
-      marginRight: '8px'
+      marginRight: '8px',
     },
     errorMessage: {
       background: 'rgba(239, 68, 68, 0.1)',
@@ -211,55 +215,55 @@ function Signup() {
       padding: '12px 16px',
       color: '#fca5a5',
       fontSize: '14px',
-      textAlign: 'center'
+      textAlign: 'center',
     },
     divider: {
       display: 'flex',
       alignItems: 'center',
       gap: '16px',
-      margin: '32px 0'
+      margin: '32px 0',
     },
     dividerLine: {
       flex: 1,
       height: '1px',
-      background: 'rgba(255,255,255,0.15)'
+      background: 'rgba(255,255,255,0.15)',
     },
     dividerText: {
       fontSize: '14px',
-      color: '#9ca3af'
+      color: '#9ca3af',
     },
     footer: {
       textAlign: 'center',
-      marginTop: '32px'
+      marginTop: '32px',
     },
     footerText: {
       color: '#9ca3af',
-      fontSize: '14px'
+      fontSize: '14px',
     },
     footerLink: {
       color: '#c084fc',
       textDecoration: 'none',
       fontWeight: '600',
-      marginLeft: '4px'
+      marginLeft: '4px',
     },
     features: {
       display: 'grid',
       gridTemplateColumns: 'repeat(2, 1fr)',
       gap: '16px',
-      marginTop: '24px'
+      marginTop: '24px',
     },
     feature: {
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
       fontSize: '14px',
-      color: '#d1d5db'
+      color: '#d1d5db',
     },
     featureIcon: {
       width: '16px',
       height: '16px',
-      color: '#10b981'
-    }
+      color: '#10b981',
+    },
   };
 
   const [focusedInput, setFocusedInput] = useState('');
@@ -300,16 +304,13 @@ function Signup() {
           <h2 style={styles.brandText}>TechRise</h2>
         </div>
         <div style={styles.navButtons} className="nav-buttons">
-          <a 
-            href="/signup" 
-            style={{...styles.navLink, ...styles.navLinkActive}}
+          <a
+            href="/signup"
+            style={{ ...styles.navLink, ...styles.navLinkActive }}
           >
             Sign Up
           </a>
-          <a 
-            href="/login" 
-            style={styles.navLink}
-          >
+          <a href="/login" style={styles.navLink}>
             Login
           </a>
         </div>
@@ -322,33 +323,74 @@ function Signup() {
           <div style={styles.formHeader}>
             <h1 style={styles.formTitle}>Join TechRise</h1>
             <p style={styles.formSubtitle}>
-              Start your personalized learning journey and accelerate your tech career
+              Start your personalized learning journey and accelerate your tech
+              career
             </p>
           </div>
 
           {/* Features Preview */}
           <div style={styles.features} className="features-grid">
             <div style={styles.feature}>
-              <svg style={styles.featureIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <svg
+                style={styles.featureIcon}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
               <span>AI-Powered Paths</span>
             </div>
             <div style={styles.feature}>
-              <svg style={styles.featureIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <svg
+                style={styles.featureIcon}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
               <span>Progress Tracking</span>
             </div>
             <div style={styles.feature}>
-              <svg style={styles.featureIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <svg
+                style={styles.featureIcon}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
               <span>Interactive Coding</span>
             </div>
             <div style={styles.feature}>
-              <svg style={styles.featureIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <svg
+                style={styles.featureIcon}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
               </svg>
               <span>Expert Guidance</span>
             </div>
@@ -361,11 +403,7 @@ function Signup() {
           </div>
 
           {/* Error Message */}
-          {error && (
-            <div style={styles.errorMessage}>
-              {error}
-            </div>
-          )}
+          {error && <div style={styles.errorMessage}>{error}</div>}
 
           {/* Form */}
           <div onSubmit={handleSignup} style={styles.form}>
@@ -380,7 +418,7 @@ function Signup() {
                 onBlur={() => setFocusedInput('')}
                 style={{
                   ...styles.input,
-                  ...(focusedInput === 'email' ? styles.inputFocus : {})
+                  ...(focusedInput === 'email' ? styles.inputFocus : {}),
                 }}
                 required
                 disabled={isLoading}
@@ -398,7 +436,7 @@ function Signup() {
                 onBlur={() => setFocusedInput('')}
                 style={{
                   ...styles.input,
-                  ...(focusedInput === 'password' ? styles.inputFocus : {})
+                  ...(focusedInput === 'password' ? styles.inputFocus : {}),
                 }}
                 required
                 disabled={isLoading}
@@ -415,7 +453,7 @@ function Signup() {
               style={{
                 ...styles.submitButton,
                 ...(isHovered && !isLoading ? styles.submitButtonHover : {}),
-                ...(isLoading ? styles.submitButtonDisabled : {})
+                ...(isLoading ? styles.submitButtonDisabled : {}),
               }}
             >
               {isLoading && <div style={styles.loadingSpinner}></div>}
@@ -427,7 +465,9 @@ function Signup() {
           <div style={styles.footer}>
             <p style={styles.footerText}>
               Already have an account?
-              <a href="/login" style={styles.footerLink}>Sign in here</a>
+              <a href="/login" style={styles.footerLink}>
+                Sign in here
+              </a>
             </p>
           </div>
         </div>

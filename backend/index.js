@@ -1,17 +1,24 @@
 const express = require('express');
 const cors = require('cors');
-const authRoutes = require('./routes/auth');
-const sequelize = require('./db');
+const db = require('./models')
 
-require('dotenv').config()
+require('dotenv').config();
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/api', authRoutes);
-
+const authRoutes = require('./routes/authRoutes');
+const codeRoutes = require('./routes/codeRoutes');
+const coursesRoutes = require('./routes/coursesRoutes');
+const questionsRoutes = require('./routes/questionsRoutes');
+//const seedRoutes = require('./routes/seedRoutes');
+app.use('/auth', authRoutes);
+app.use('/code', codeRoutes);
+app.use('/courses', coursesRoutes);
+app.use('/questions', questionsRoutes);
+//app.use('/seed', seedRoutes)
 (async () => {
   try {
-    await sequelize.sync({ force: true });
+    await db.sequelize.sync();
     const PORT = process.env.PORT || 8080;
     app.listen(PORT, () =>
       console.log(

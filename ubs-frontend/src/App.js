@@ -5,6 +5,8 @@ import Signup from './components/Signup';
 import UserPreferencesModal from './components/UserPreferencesModal';
 import Profile from './components/Profile';
 import HomePage from './components/Home';
+import ReplitEmbed from './components/MonacoEditor';
+import MonacoEditor from './components/MonacoEditor';
 
 function App() {
   return (
@@ -24,6 +26,10 @@ function App() {
           }
         />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/code" element={<MonacoEditor />} />
+        <Route path="/courses" element={<CourseList />} />
+        <Route path="/courses/:courseId/questions" element={<QuestionList />} />
+        <Route path="/questions/:questionId" element={<QuestionPage />} />
       </Routes>
     </Router>
   );

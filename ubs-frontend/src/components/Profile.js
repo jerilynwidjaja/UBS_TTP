@@ -9,11 +9,14 @@ const ProfilePage = () => {
     const token = localStorage.getItem('token');
 
     axios
-      .get('https://sapient-ground-460717-a8.df.r.appspot.com/api/career-details', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .get(
+        'https://sapient-ground-460717-a8.df.r.appspot.com/auth/career-details',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((res) => {
         setUser(res.data);
       })

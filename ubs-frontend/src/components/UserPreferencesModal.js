@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 Modal.setAppElement('#root');
 
 const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const [careerStage, setCareerStage] = useState('');
   const [skills, setSkills] = useState([]);
   const [goals, setGoals] = useState([]);
@@ -27,10 +27,10 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
         skills,
         goals,
         timeAvailability,
-        level
+        level,
       };
       await axios.post(
-        'https://sapient-ground-460717-a8.df.r.appspot.com/api/career-details',
+        'https://sapient-ground-460717-a8.df.r.appspot.com/auth/career-details',
         preferences,
         {
           headers: {
@@ -38,7 +38,7 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
           },
         }
       );
-      navigate('/profile')
+      navigate('/profile');
     } catch (err) {
       alert('Error saving details: ' + err.response.data.message);
     }
@@ -113,10 +113,7 @@ const UserPreferencesModal = ({ isOpen, onRequestClose }) => {
 
         <div style={sectionStyle}>
           <label style={labelStyle}>Level:</label>
-          <select
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-          >
+          <select value={level} onChange={(e) => setLevel(e.target.value)}>
             <option value="">Select</option>
             <option value="beginner">Beginner</option>
             <option value="intermediate">Intermediate</option>
